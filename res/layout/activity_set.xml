@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="#445566"
+    tools:context=".LockActivity" >
+    
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="设置解锁密码"
+        android:textSize="28sp"
+        android:textColor="#ffff7733"/>
+
+    <com.makerx.galalock.activity.view.LockPatternView
+         xmlns:app="http://schemas.android.com/apk/res/com.wgs.jiesuo"
+         android:id="@+id/lpv_set"
+         android:background="#334455"
+         android:layout_width="300dp"
+         android:layout_height="300dp"
+        />
+    <Button 
+        android:id="@+id/btn_home_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="设置"/>
+    <Button 
+        android:id="@+id/btn_home_choose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="选择"/>
+
+</LinearLayout>
