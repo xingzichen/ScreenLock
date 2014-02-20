@@ -16,11 +16,7 @@ public class LockScreenReceiver extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) {
 
-		// Toast.makeText(context, "" + "enterrrrrr",
-		// Toast.LENGTH_SHORT).show();
 		if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
-			// Toast.makeText(context, "" + "screeen off",
-			// Toast.LENGTH_SHORT).show();
 
 			wasScreenOn = false;
 			Intent intent11 = new Intent(context, LockActivity.class);
@@ -32,8 +28,6 @@ public class LockScreenReceiver extends BroadcastReceiver {
 
 			context.startActivity(intent11);
 
-			// do whatever you need to do here
-			// wasScreenOn = false;
 		} else if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
 
 			wasScreenOn = true;
@@ -43,11 +37,6 @@ public class LockScreenReceiver extends BroadcastReceiver {
 			intent11.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			intent11.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
-			// context.startActivity(intent11);
-			// Toast.makeText(context, "" + "start activity",
-			// Toast.LENGTH_SHORT).show();
-			// and do whatever you need to do here
-			// wasScreenOn = true;
 		} else if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
 			KeyguardManager.KeyguardLock k1;
 			KeyguardManager km = (KeyguardManager) context
@@ -62,12 +51,6 @@ public class LockScreenReceiver extends BroadcastReceiver {
 			intent11.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 			context.startActivity(intent11);
 
-			// Intent intent = new Intent(context, LockPage.class);
-			// context.startActivity(intent);
-			// Intent serviceLauncher = new Intent(context,
-			// UpdateService.class);
-			// context.startService(serviceLauncher);
-			// Log.v("TEST", "Service loaded at start");
 		}
 
 	}
