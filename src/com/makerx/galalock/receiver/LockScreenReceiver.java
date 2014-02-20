@@ -27,6 +27,8 @@ public class LockScreenReceiver extends BroadcastReceiver {
 			GalaLockApplication.getInstance().setLockStat(true);
 			Log.d(TAG, "SetLockStat true ");
 			intent11.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			intent11.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+			
 
 			context.startActivity(intent11);
 
@@ -39,6 +41,7 @@ public class LockScreenReceiver extends BroadcastReceiver {
 			GalaLockApplication.getInstance().setLockStat(true);
 			Log.d(TAG, "SetLockStat true ");
 			intent11.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			intent11.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
 			// context.startActivity(intent11);
 			// Toast.makeText(context, "" + "start activity",
@@ -56,6 +59,7 @@ public class LockScreenReceiver extends BroadcastReceiver {
 			GalaLockApplication.getInstance().setLockStat(true);
 			Log.d(TAG, "SetLockStat true ");
 			intent11.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			intent11.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 			context.startActivity(intent11);
 
 			// Intent intent = new Intent(context, LockPage.class);
