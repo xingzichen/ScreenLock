@@ -17,4 +17,10 @@ public class HomeAppInfo {
 		icon = rInfo.loadIcon(pm);
 	}
 	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return label;
+	}
+	
 }

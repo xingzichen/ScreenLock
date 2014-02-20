@@ -71,12 +71,12 @@ public class SetActivity extends Activity {
 						SetActivity.this);
 				builderSingle.setIcon(R.drawable.ic_launcher);
 				builderSingle.setTitle("Select One Name:-");
-				final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+				final ArrayAdapter<HomeAppInfo> arrayAdapter = new ArrayAdapter<HomeAppInfo>(
 						SetActivity.this,
 						android.R.layout.select_dialog_singlechoice);
-				Log.d("ABC", ""+queryHomeApp().size());
-				for(HomeAppInfo info : queryHomeApp()){
-					arrayAdapter.add(info.label);
+				Log.d("ABC", "" + queryHomeApp().size());
+				for (HomeAppInfo info : queryHomeApp()) {
+					arrayAdapter.add(info);
 				}
 				builderSingle.setNegativeButton("cancel",
 						new DialogInterface.OnClickListener() {
@@ -94,7 +94,12 @@ public class SetActivity extends Activity {
 							@Override
 							public void onClick(DialogInterface dialog,
 									int which) {
-								String strName = arrayAdapter.getItem(which);
+								String strName = ((HomeAppInfo)arrayAdapter.getItem(which)).label;
+								GalaLockApplication
+										.getInstance()
+										.getSharePreferenceUtil()
+										.setLauncherPackageName(
+												arrayAdapter.getItem(which).packageName);
 								AlertDialog.Builder builderInner = new AlertDialog.Builder(
 										SetActivity.this);
 								builderInner.setMessage(strName);
