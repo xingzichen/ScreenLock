@@ -37,6 +37,7 @@
             android:name="com.makerx.galalock.activity.LockActivity"
             android:clearTaskOnLaunch="true"
             android:launchMode="singleTop"
+            android:excludeFromRecents="true"
             android:screenOrientation="nosensor"
             android:stateNotNeeded="true"
             android:theme="@style/FullscreenTheme" >
