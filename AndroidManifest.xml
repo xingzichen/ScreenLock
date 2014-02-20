@@ -25,6 +25,7 @@
             android:name="com.makerx.galalock.activity.SetActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
+            android:launchMode="standard"
             android:theme="@style/FullscreenTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,25 +36,16 @@
         <activity
             android:name="com.makerx.galalock.activity.LockActivity"
             android:clearTaskOnLaunch="true"
-            android:launchMode="singleTask"
+            android:launchMode="singleTop"
             android:screenOrientation="nosensor"
             android:stateNotNeeded="true"
             android:theme="@style/FullscreenTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.HOME" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.MONKEY" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name="com.makerx.galalock.activity.SwitchActivity"
-            android:clearTaskOnLaunch="true"
-            android:launchMode="singleTask"
-            android:screenOrientation="nosensor"
-            android:stateNotNeeded="true"
-            android:theme="@style/FullscreenTheme" >
         </activity>
 
         <service android:name="com.makerx.galalock.service.ScreenLockService" >

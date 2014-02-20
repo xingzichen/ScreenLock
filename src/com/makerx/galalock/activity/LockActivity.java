@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.makerx.galalock.R;
@@ -29,11 +30,13 @@ public class LockActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 
+		this.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD); 
 		boolean lock = GalaLockApplication.getInstance().getLockStat();
 		if (lock) {
-
+			Log.d(TAG, "in oncreate if true");
 		} else {
 			// 启动默认launcher
+			Log.d(TAG, "in oncreate if false");
 			Intent homeIntent = new Intent("android.intent.action.MAIN");
 			homeIntent.addCategory("android.intent.category.HOME");
 			homeIntent.addCategory("android.intent.category.DEFAULT");
@@ -46,9 +49,6 @@ public class LockActivity extends Activity {
 		}
 
 		setContentView(R.layout.activity_lock);
-
-		GalaLockApplication.getInstance().setLockStat(true);
-		Log.d(TAG, "SetLockStat true ");
 
 		mLockPatternUtils = GalaLockApplication.getInstance()
 				.getLockPatternUtils();
@@ -104,17 +104,35 @@ public class LockActivity extends Activity {
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		// TODO Auto-generated method stub
-		if (event.getKeyCode() == KeyEvent.KEYCODE_BACK)
+		switch(event.getKeyCode()){
+		case KeyEvent.KEYCODE_APP_SWITCH:
+		case KeyEvent.KEYCODE_HOME:
+		case KeyEvent.KEYCODE_BACK:
 			return true;
-		else
+		default:
 			return super.onKeyDown(keyCode, event);
+		}
 	}
 
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-		Log.d(TAG, "SetLockStat false ");
 		GalaLockApplication.getInstance().setLockStat(false);
+		Log.d(TAG, "SetLockStat false ");
+	}
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		GalaLockApplication.getInstance().setLockStat(true);
+		Log.d(TAG, "SetLockStat true ");
+	}
+	
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
 	}
 }
