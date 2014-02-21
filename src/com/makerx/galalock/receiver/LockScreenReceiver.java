@@ -18,24 +18,24 @@ public class LockScreenReceiver extends BroadcastReceiver {
 
 		if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
 
-			wasScreenOn = false;
-			Intent intent11 = new Intent(context, LockActivity.class);
-			GalaLockApplication.getInstance().setLockStat(true);
-			Log.d(TAG, "SetLockStat true ");
-			intent11.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			intent11.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-			
+			Log.d(TAG, " ACTION_SCREEN_OFF ");
 
-			context.startActivity(intent11);
+			wasScreenOn = false;
+			if (!GalaLockApplication.getInstance().getLockStat()) {
+				Intent intent11 = new Intent(context, LockActivity.class);
+				GalaLockApplication.getInstance().setLockStat(true);
+				Log.d(TAG, "SetLockStat true ");
+				intent11.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				intent11.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+				context.startActivity(intent11);
+			}
 
 		} else if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
 
+			Log.d(TAG, " ACTION_SCREEN_ON ");
+
 			wasScreenOn = true;
-			Intent intent11 = new Intent(context, LockActivity.class);
-			GalaLockApplication.getInstance().setLockStat(true);
-			Log.d(TAG, "SetLockStat true ");
-			intent11.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			intent11.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
 		} else if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
 			KeyguardManager.KeyguardLock k1;
@@ -43,6 +43,8 @@ public class LockScreenReceiver extends BroadcastReceiver {
 					.getSystemService(context.KEYGUARD_SERVICE);
 			k1 = km.newKeyguardLock("IN");
 			k1.disableKeyguard();
+
+			Log.d(TAG, " ACTION_BOOT_COMPLETED ");
 
 			Intent intent11 = new Intent(context, LockActivity.class);
 			GalaLockApplication.getInstance().setLockStat(true);
