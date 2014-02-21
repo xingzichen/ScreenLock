@@ -25,11 +25,16 @@
         android:id="@+id/btn_home_setting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="设置"/>
+        android:text="设置绑定home"/>
     <Button 
         android:id="@+id/btn_home_choose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="选择"/>
+        android:text="选择默认launcher"/>
+    <Button 
+        android:id="@+id/btn_lock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开启锁屏"/>
 
 </LinearLayout>

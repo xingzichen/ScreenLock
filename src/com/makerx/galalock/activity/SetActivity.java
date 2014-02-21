@@ -32,6 +32,7 @@ public class SetActivity extends Activity {
 
 	private Button mBtnHomeSetting;
 	private Button mBtnHomeChoose;
+	private Button mBtnLock;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,7 @@ public class SetActivity extends Activity {
 
 		mBtnHomeSetting = (Button) findViewById(R.id.btn_home_setting);
 		mBtnHomeChoose = (Button) findViewById(R.id.btn_home_choose);
+		mBtnLock = (Button) findViewById(R.id.btn_lock);
 
 		mBtnHomeSetting.setOnClickListener(new OnClickListener() {
 
@@ -94,7 +96,8 @@ public class SetActivity extends Activity {
 							@Override
 							public void onClick(DialogInterface dialog,
 									int which) {
-								String strName = ((HomeAppInfo)arrayAdapter.getItem(which)).label;
+								String strName = ((HomeAppInfo) arrayAdapter
+										.getItem(which)).label;
 								GalaLockApplication
 										.getInstance()
 										.getSharePreferenceUtil()
@@ -118,6 +121,29 @@ public class SetActivity extends Activity {
 							}
 						});
 				builderSingle.show();
+			}
+		});
+
+		mBtnLock.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				GalaLockApplication
+						.getInstance()
+						.getSharePreferenceUtil()
+						.setScreenLockState(
+								!GalaLockApplication.getInstance()
+										.getSharePreferenceUtil()
+										.getScreenLockState());
+				if (GalaLockApplication.getInstance().getSharePreferenceUtil()
+						.getScreenLockState()) {
+					Toast.makeText(SetActivity.this, "screen locked",
+							Toast.LENGTH_SHORT).show();
+				} else {
+					Toast.makeText(SetActivity.this, "screen unlocked",
+							Toast.LENGTH_SHORT).show();
+				}
 			}
 		});
 

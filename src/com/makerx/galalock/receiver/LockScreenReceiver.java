@@ -16,6 +16,11 @@ public class LockScreenReceiver extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) {
 
+		if (!GalaLockApplication.getInstance().getSharePreferenceUtil()
+				.getScreenLockState()) { // 判断屏幕锁是否开启
+			return;
+		}
+
 		if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
 
 			Log.d(TAG, " ACTION_SCREEN_OFF ");
