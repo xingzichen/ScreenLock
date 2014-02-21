@@ -21,9 +21,9 @@ public class LockScreenReceiver extends BroadcastReceiver {
 			Log.d(TAG, " ACTION_SCREEN_OFF ");
 
 			wasScreenOn = false;
-			if (!GalaLockApplication.getInstance().getLockStat()) {
+			if (!LockActivity.isLockStat()) {
 				Intent intent11 = new Intent(context, LockActivity.class);
-				GalaLockApplication.getInstance().setLockStat(true);
+				LockActivity.setLockStat(true);
 				Log.d(TAG, "SetLockStat true ");
 				intent11.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				intent11.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -47,7 +47,7 @@ public class LockScreenReceiver extends BroadcastReceiver {
 			Log.d(TAG, " ACTION_BOOT_COMPLETED ");
 
 			Intent intent11 = new Intent(context, LockActivity.class);
-			GalaLockApplication.getInstance().setLockStat(true);
+			LockActivity.setLockStat(true);
 			Log.d(TAG, "SetLockStat true ");
 			intent11.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			intent11.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

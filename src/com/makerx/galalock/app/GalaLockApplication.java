@@ -24,7 +24,7 @@ public class GalaLockApplication extends Application {
 	
 	public final static String SP_FILE_NAME = "GALA_LOCK_SP";
 
-	private boolean mLockStat = false;
+//	private boolean mLockStat = false;
 
 	@Override
 	public void onCreate() {
@@ -47,14 +47,14 @@ public class GalaLockApplication extends Application {
 		return mLockPatternUtils;
 	}
 
-	public synchronized void setLockStat(boolean stat) {
-		mLockStat = stat;
-		return;
-	}
-
-	public synchronized boolean getLockStat() {
-		return mLockStat;
-	}
+//	public synchronized void setLockStat(boolean stat) {
+//		mLockStat = stat;
+//		return;
+//	}
+//
+//	public synchronized boolean getLockStat() {
+//		return mLockStat;
+//	}
 
 	public synchronized SharePreferenceUtil getSharePreferenceUtil() {
 		if (null == mSpUtil)

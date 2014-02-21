@@ -24,6 +24,16 @@ public class LockActivity extends Activity {
 
 	private LockPatternView mLockPatternView;
 	private LockPatternUtils mLockPatternUtils;
+	
+	private static boolean mLockStat = false;
+
+	public static boolean isLockStat() {
+		return mLockStat;
+	}
+
+	public static void setLockStat(boolean mLockStat) {
+		LockActivity.mLockStat = mLockStat;
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +41,7 @@ public class LockActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		this.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD); 
-		boolean lock = GalaLockApplication.getInstance().getLockStat();
+		boolean lock = LockActivity.isLockStat();
 		if (lock) {
 			Log.d(TAG, "in oncreate if true");
 		} else {
@@ -118,7 +128,7 @@ public class LockActivity extends Activity {
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-		GalaLockApplication.getInstance().setLockStat(false);
+		LockActivity.setLockStat(false);
 		Log.d(TAG, "SetLockStat false ");
 	}
 	
@@ -126,7 +136,7 @@ public class LockActivity extends Activity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		GalaLockApplication.getInstance().setLockStat(true);
+		LockActivity.setLockStat(true);
 		Log.d(TAG, "SetLockStat true ");
 	}
 	
@@ -135,4 +145,6 @@ public class LockActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onStop();
 	}
+	
+	
 }
