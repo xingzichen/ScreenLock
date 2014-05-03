@@ -5,7 +5,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:background="#445566"
-    tools:context=".LockActivity" >
+    tools:context=".ScreenLockActivity" >
     
     <TextView 
         android:layout_width="wrap_content"

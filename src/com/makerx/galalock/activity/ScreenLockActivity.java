@@ -18,7 +18,7 @@ import com.makerx.galalock.activity.view.LockPatternView.DisplayMode;
 import com.makerx.galalock.activity.view.LockPatternView.OnPatternListener;
 import com.makerx.galalock.app.GalaLockApplication;
 
-public class LockActivity extends Activity {
+public class ScreenLockActivity extends Activity {
 
 	private String TAG = "LockActivity";
 
@@ -32,7 +32,7 @@ public class LockActivity extends Activity {
 	}
 
 	public static void setLockStat(boolean mLockStat) {
-		LockActivity.mLockStat = mLockStat;
+		ScreenLockActivity.mLockStat = mLockStat;
 	}
 
 	@Override
@@ -41,7 +41,7 @@ public class LockActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		this.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD); 
-		boolean lock = LockActivity.isLockStat();
+		boolean lock = ScreenLockActivity.isLockStat();
 		if (lock) {
 			Log.d(TAG, "in oncreate if true");
 		} else {
@@ -80,18 +80,18 @@ public class LockActivity extends Activity {
 				if (result != 1) {
 					if (result == 0) {
 						mLockPatternView.setDisplayMode(DisplayMode.Wrong);
-						Toast.makeText(LockActivity.this, "password error",
+						Toast.makeText(ScreenLockActivity.this, "password error",
 								Toast.LENGTH_LONG).show();
 					} else {
 						// result = -1
 						mLockPatternView.clearPattern();
-						Toast.makeText(LockActivity.this,
+						Toast.makeText(ScreenLockActivity.this,
 								"password has not been set", Toast.LENGTH_LONG)
 								.show();
 					}
 
 				} else {
-					Toast.makeText(LockActivity.this, "unlocked",
+					Toast.makeText(ScreenLockActivity.this, "unlocked",
 							Toast.LENGTH_LONG).show();
 					finish();
 				}
@@ -128,7 +128,7 @@ public class LockActivity extends Activity {
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-		LockActivity.setLockStat(false);
+		ScreenLockActivity.setLockStat(false);
 		Log.d(TAG, "SetLockStat false ");
 	}
 	
@@ -136,7 +136,7 @@ public class LockActivity extends Activity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		LockActivity.setLockStat(true);
+		ScreenLockActivity.setLockStat(true);
 		Log.d(TAG, "SetLockStat true ");
 	}
 	

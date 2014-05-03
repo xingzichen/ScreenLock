@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.makerx.galalock.activity.LockActivity;
+import com.makerx.galalock.activity.ScreenLockActivity;
 import com.makerx.galalock.app.GalaLockApplication;
 
 public class LockScreenReceiver extends BroadcastReceiver {
@@ -26,9 +26,9 @@ public class LockScreenReceiver extends BroadcastReceiver {
 			Log.d(TAG, " ACTION_SCREEN_OFF ");
 
 			wasScreenOn = false;
-			if (!LockActivity.isLockStat()) {
-				Intent intent11 = new Intent(context, LockActivity.class);
-				LockActivity.setLockStat(true);
+			if (!ScreenLockActivity.isLockStat()) {
+				Intent intent11 = new Intent(context, ScreenLockActivity.class);
+				ScreenLockActivity.setLockStat(true);
 				Log.d(TAG, "SetLockStat true ");
 				intent11.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				intent11.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -51,8 +51,8 @@ public class LockScreenReceiver extends BroadcastReceiver {
 
 			Log.d(TAG, " ACTION_BOOT_COMPLETED ");
 
-			Intent intent11 = new Intent(context, LockActivity.class);
-			LockActivity.setLockStat(true);
+			Intent intent11 = new Intent(context, ScreenLockActivity.class);
+			ScreenLockActivity.setLockStat(true);
 			Log.d(TAG, "SetLockStat true ");
 			intent11.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			intent11.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

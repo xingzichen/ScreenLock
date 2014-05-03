@@ -34,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.makerx.galalock.activity.LockActivity"
+            android:name="com.makerx.galalock.activity.ScreenLockActivity"
             android:clearTaskOnLaunch="true"
             android:launchMode="singleTop"
             android:excludeFromRecents="true"
